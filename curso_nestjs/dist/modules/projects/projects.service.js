@@ -9,11 +9,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProjectsService = void 0;
 const common_1 = require("@nestjs/common");
 let ProjectsService = class ProjectsService {
-    findAll() { }
-    findById(id) { }
-    create(data) { }
-    update(id, data) { }
-    remove(id) { }
+    findAll() {
+        return ['teste1', 'teste2'];
+    }
+    findById(id) {
+        return 'teste1';
+    }
+    create(data) {
+        return ' create teste1';
+    }
+    update(id, data) {
+        return 'Update teste1';
+    }
+    remove(id) {
+        return 'remove teste1';
+    }
 };
 exports.ProjectsService = ProjectsService;
 exports.ProjectsService = ProjectsService = __decorate([

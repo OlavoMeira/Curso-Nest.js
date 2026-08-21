@@ -1,7 +1,7 @@
 export declare class ProjectsService {
-    findAll(): void;
-    findById(id: string): void;
-    create(data: any): void;
-    update(id: string, data: any): void;
-    remove(id: string): void;
+    findAll(): string[];
+    findById(id: string): string;
+    create(data: any): string;
+    update(id: string, data: any): string;
+    remove(id: string): string;
 }

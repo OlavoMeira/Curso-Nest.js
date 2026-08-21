@@ -3,13 +3,28 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class ProjectsService {
 
-  findAll() { }
+  findAll() {
 
-  findById(id: string) { }
+    return ['teste1', 'teste2']
+  }
 
-  create(data: any) { }
+  findById(id: string) {
 
-  update(id: string, data: any) { }
+    return 'teste1'
+  }
 
-  remove(id: string) { }
+  create(data: any) {
+
+    return ' create teste1'
+  }
+
+  update(id: string, data: any) {
+
+    return 'Update teste1'
+  }
+
+  remove(id: string) {
+
+    return 'remove teste1'
+  }
 }
