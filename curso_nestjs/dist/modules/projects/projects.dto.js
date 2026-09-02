@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProjectRequestDTO = void 0;
+exports.ProjectlistItemDTO = exports.ProjectRequestDTO = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class ProjectRequestDTO {
@@ -28,4 +28,32 @@ __decorate([
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
 ], ProjectRequestDTO.prototype, "description", void 0);
+class ProjectlistItemDTO {
+    id;
+    name;
+    description;
+    createAt;
+    updatedAt;
+}
+exports.ProjectlistItemDTO = ProjectlistItemDTO;
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], ProjectlistItemDTO.prototype, "id", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], ProjectlistItemDTO.prototype, "name", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", String)
+], ProjectlistItemDTO.prototype, "description", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ format: 'date-time' }),
+    __metadata("design:type", String)
+], ProjectlistItemDTO.prototype, "createAt", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ format: 'date-time' }),
+    __metadata("design:type", String)
+], ProjectlistItemDTO.prototype, "updatedAt", void 0);
 //# sourceMappingURL=projects.dto.js.map

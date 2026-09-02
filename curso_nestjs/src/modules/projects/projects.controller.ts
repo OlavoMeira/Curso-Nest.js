@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
-import { ProjectRequestDTO } from './projects.dto';
+import { ProjectlistItemDTO, ProjectRequestDTO } from './projects.dto';
+import { ApiResponse } from '@nestjs/swagger';
 
 @Controller({
   version: '1',
@@ -13,22 +14,34 @@ export class ProjectsController {
   ) { }
 
   @Get()
+  @ApiResponse({
+    type: [ProjectlistItemDTO],
+  })
   findAll() {
 
     return this.projectsService.findAll();
   }
 
   @Get(':id')
+  @ApiResponse({
+    type: ProjectlistItemDTO,
+  })
   findOne(@Param('id', ParseUUIDPipe) id: string) {
     return this.projectsService.findById(id);
   }
 
   @Post()
+  @ApiResponse({
+    type: ProjectlistItemDTO,
+  })
   create(@Body() data: ProjectRequestDTO) {
     return this.projectsService.create(data);
   }
 
   @Put(':id')
+  @ApiResponse({
+    type: ProjectlistItemDTO,
+  })
   update(
     @Param('id', ParseUUIDPipe) id: string,
     @Body() data: ProjectRequestDTO
@@ -38,6 +51,7 @@ export class ProjectsController {
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.projectsService.remove(id);
   }

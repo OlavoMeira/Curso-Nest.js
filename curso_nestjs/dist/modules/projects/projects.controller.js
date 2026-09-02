@@ -16,6 +16,7 @@ exports.ProjectsController = void 0;
 const common_1 = require("@nestjs/common");
 const projects_service_1 = require("./projects.service");
 const projects_dto_1 = require("./projects.dto");
+const swagger_1 = require("@nestjs/swagger");
 let ProjectsController = class ProjectsController {
     projectsService;
     constructor(projectsService) {
@@ -40,12 +41,18 @@ let ProjectsController = class ProjectsController {
 exports.ProjectsController = ProjectsController;
 __decorate([
     (0, common_1.Get)(),
+    (0, swagger_1.ApiResponse)({
+        type: [projects_dto_1.ProjectlistItemDTO],
+    }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], ProjectsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiResponse)({
+        type: projects_dto_1.ProjectlistItemDTO,
+    }),
     __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -53,6 +60,9 @@ __decorate([
 ], ProjectsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
+    (0, swagger_1.ApiResponse)({
+        type: projects_dto_1.ProjectlistItemDTO,
+    }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [projects_dto_1.ProjectRequestDTO]),
@@ -60,6 +70,9 @@ __decorate([
 ], ProjectsController.prototype, "create", null);
 __decorate([
     (0, common_1.Put)(':id'),
+    (0, swagger_1.ApiResponse)({
+        type: projects_dto_1.ProjectlistItemDTO,
+    }),
     __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -68,6 +81,7 @@ __decorate([
 ], ProjectsController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
+    (0, common_1.HttpCode)(common_1.HttpStatus.NO_CONTENT),
     __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
