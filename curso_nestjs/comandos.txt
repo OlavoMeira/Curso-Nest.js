@@ -1,0 +1,19 @@
+- npm install
+
+- pnpm prisma generate 
+
+- pnpm prisma migrate
+
+- npm run start:dev
+
+### quando mecher no shema.prisma para atualizar use.
+
+- pnpm prisma db push
+
+### Comando para adicionar um novo madulo 
+
+- nest generate module (NOME DO NOVO MODULO)
+
+### Comando para Gerar um vontroler ou service de um modulo.
+
+- nest generate controller (NOME DO MODULO)

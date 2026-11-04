@@ -14,9 +14,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProjectsController = void 0;
 const common_1 = require("@nestjs/common");
-const projects_service_1 = require("./projects.service");
-const projects_dto_1 = require("./projects.dto");
 const swagger_1 = require("@nestjs/swagger");
+const projects_dto_1 = require("./projects.dto");
+const projects_service_1 = require("./projects.service");
 let ProjectsController = class ProjectsController {
     projectsService;
     constructor(projectsService) {
@@ -25,16 +25,28 @@ let ProjectsController = class ProjectsController {
     findAll() {
         return this.projectsService.findAll();
     }
-    findOne(id) {
-        return this.projectsService.findById(id);
+    async findOne(id) {
+        const project = await this.projectsService.findById(id);
+        if (!project) {
+            throw new common_1.HttpException('Project not found', common_1.HttpStatus.NOT_FOUND);
+        }
+        return project;
     }
     create(data) {
         return this.projectsService.create(data);
     }
-    update(id, data) {
+    async update(id, data) {
+        const project = await this.projectsService.findById(id);
+        if (!project) {
+            throw new common_1.HttpException('project not found', common_1.HttpStatus.NOT_FOUND);
+        }
         return this.projectsService.update(id, data);
     }
-    remove(id) {
+    async remove(id) {
+        const project = await this.projectsService.findById(id);
+        if (!project) {
+            throw new common_1.HttpException('Project not found', common_1.HttpStatus.NOT_FOUND);
+        }
         return this.projectsService.remove(id);
     }
 };
@@ -56,7 +68,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Post)(),
@@ -77,7 +89,7 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, projects_dto_1.ProjectRequestDTO]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
@@ -85,7 +97,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id', common_1.ParseUUIDPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProjectsController.prototype, "remove", null);
 exports.ProjectsController = ProjectsController = __decorate([
     (0, common_1.Controller)({
