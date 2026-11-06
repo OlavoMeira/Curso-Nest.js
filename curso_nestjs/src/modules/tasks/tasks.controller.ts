@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Get, Param, ParseUUIDPipe, Post, Put } from '@nestjs/common'
 import { TasksService } from './tasks.service'
 
 @Controller({
@@ -18,7 +18,7 @@ export class TasksController {
     return this.tasksService.create(projectId, data)
   }
 
-  @Get(':tasckId')
+  @Get(':taskId')
   findOne(
     @Param('projectId', ParseUUIDPipe) projectId: string,
     @Param('taskId', ParseUUIDPipe) taskId: string,
